@@ -1,0 +1,35 @@
+{
+  "name": "sgmap-mesdroits-api",
+  "description": "Mes-droits.gouv.fr REST API",
+  "version": "0.1.0",
+  "dependencies": {
+    "async": "^0.9.0",
+    "bcrypt": "^0.7.8",
+    "body-parser": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "debug": "^1.0.2",
+    "errorhandler": "~1.0.0",
+    "express": "~4.0.0",
+    "express-session": "~1.0.2",
+    "lodash": "~2.4.1",
+    "moment": "~2.5.1",
+    "mongoose": "~3.8.12",
+    "morgan": "~1.0.0",
+    "passport": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "request": "^2.39.0",
+    "superagent": "^0.18.0",
+    "underscore.string": "^2.3.3"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-mocha-test": "~0.8.1",
+    "load-grunt-tasks": "~0.2.0",
+    "should": "~2.1.0"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "main": "lib/app"
+}
