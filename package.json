@@ -28,6 +28,5 @@
   },
   "scripts": {
     "test": "grunt"
-  },
-  "main": "lib/app"
+  }
 }
