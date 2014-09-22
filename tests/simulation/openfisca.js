@@ -191,6 +191,28 @@ describe('openfisca', function() {
             // then
             result.should.throw('L\'individu de role "demandeur" n\'a pas de date de naissance renseignée');
         });
+
+        it('should map the given patrimoine in the situation on the demandeur', function() {
+            // given
+            var situation = {patrimoine: {
+                revenusLocatifs: [],
+                valeurLocativeImmoNonLoue: 1,
+                valeurLocativeTerrainNonLoue: 1,
+                revenusDuCapital: [],
+                epargneSurLivret: 1,
+                epargneSansRevenus: 1
+            }, individus: [{role: 'demandeur', dateDeNaissance: '1989-09-14'}]};
+
+            // when
+            var result = openfisca.mapIndividus(situation);
+
+            // then
+            result[0].should.have.property('epargne_non_remuneree', 1);
+            result[0].should.have.property('valeur_locative_immo_non_loue', 1);
+            result[0].should.have.property('valeur_locative_terrains_non_loue', 1);
+            result[0].should.have.property('revenus_locatifs', 0);
+            result[0].should.have.property('revenus_capital', 0);
+        });
     });
 
     describe('mapLogement', function() {
