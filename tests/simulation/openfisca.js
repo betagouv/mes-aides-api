@@ -4,6 +4,7 @@ var should = require('should');
 describe('openfisca', function() {
     describe('mapFamilles', function() {
         it('should map parents', function() {
+            // given
             var situation = {
                 individus: [
                     {
@@ -20,11 +21,16 @@ describe('openfisca', function() {
                     }
                 ]
             };
+
+            // when
             var result = openfisca.mapFamilles(situation);
+
+            // then
             result.should.eql([{ parents: ['demandeur', 'conjoint'], enfants: [] }]);
         });
 
         it('should map children', function() {
+            // given
             var situation = {
                 individus: [
                     {
@@ -41,13 +47,18 @@ describe('openfisca', function() {
                     }
                 ]
             };
+
+            // when
             var result = openfisca.mapFamilles(situation);
+
+            // then
             result.should.eql([{ parents: [], enfants: ['enfant1', 'enfant2'] }]);
         });
     });
 
     describe('mapMenages', function() {
         it('should map demandeur as personne de référence', function() {
+            // given
             var situation = {
                 logement: {},
                 individus: [
@@ -57,11 +68,16 @@ describe('openfisca', function() {
                     }
                 ]
             };
+
+            // when
             var result = openfisca.mapMenages(situation);
+
+            // then
             result.should.eql([{ personne_de_reference: 'demandeur', enfants: [] }]);
         });
 
         it('should map conjoint if provided', function() {
+            // given
             var situation = {
                 logement: {},
                 individus: [
@@ -75,11 +91,16 @@ describe('openfisca', function() {
                     }
                 ]
             };
+
+            // when
             var result = openfisca.mapMenages(situation);
+
+            // then
             result.should.eql([{ personne_de_reference: 'demandeur', conjoint: 'conjoint', enfants: [] }]);
         });
 
         it('should map children', function() {
+            // given
             var situation = {
                 logement: {},
                 individus: [
@@ -97,13 +118,18 @@ describe('openfisca', function() {
                     }
                 ]
             };
+
+            // when
             var result = openfisca.mapMenages(situation);
+
+            // then
             result.should.eql([{ personne_de_reference: 'demandeur', enfants: ['enfant'] }]);
         });
     });
 
     describe('mapFoyersFiscaux', function() {
         it('should map parents as declarants', function() {
+            // given
             var situation = {
                 individus: [
                     {
@@ -118,36 +144,38 @@ describe('openfisca', function() {
                     }
                 ]
             };
+
+            // when
             var result = openfisca.mapFoyersFiscaux(situation);
+
+            // then
             result.should.eql([{ declarants: ['demandeur', 'conjoint'], personnes_a_charge: [] }]);
         });
     });
 
     describe('mapIndividus', function() {
         it('should map to an well-formatted object for openfisca', function() {
+            // given
             var situation = {
                 individus: [
                     {
                         _id: 'demandeur',
-                        role: 'demandeur',
                         dateDeNaissance: '1989-09-14'
                     }
                 ]
             };
+
+            // when
             var result = openfisca.mapIndividus(situation);
-            result.should.eql([
-                {
-                    id: 'demandeur',
-                    birth: '1989-09-14',
-                    sali: 0,
-                    choi: 0,
-                    alr: 0,
-                    rsti: 0
-                }
-            ]);
+
+            // then
+            result.length.should.be.exactly(1);
+            result[0].id.should.be.exactly('demandeur');
+            result[0].birth.should.be.exactly('1989-09-14');
         });
 
         it('should throw an exception if no birth date is provided for an individu', function() {
+            // given
             var situation = {
                 individus: [
                     {
@@ -156,7 +184,11 @@ describe('openfisca', function() {
                     }
                 ]
             };
+
+            // when
             var result = openfisca.mapIndividus.bind(null, situation);
+
+            // then
             result.should.throw('L\'individu de role "demandeur" n\'a pas de date de naissance renseignée');
         });
     });
@@ -218,13 +250,6 @@ describe('openfisca', function() {
 
             // then
             result.code_postal.should.be.exactly(75011);
-        });
-    });
-
-    describe('mapPatrimoine', function() {
-        it('should attach the declared patrimoine to the demandeur', function() {
-            // given
-            var situation = {patrimoine: {}};
         });
     });
 });
