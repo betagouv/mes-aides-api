@@ -23,12 +23,18 @@ module.exports = function (grunt) {
         reporter: 'spec'
       },
       src: ['tests/**/*.js']
+    },
+
+    env: {
+      test: {
+        NODE_ENV: 'test'
+      }
     }
 
   });
 
   grunt.registerTask('default', [
     'jshint',
-    // 'mochaTest'
+    'mochaTest'
   ]);
 };

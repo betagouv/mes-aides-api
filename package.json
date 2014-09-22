@@ -24,6 +24,7 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-mocha-test": "~0.8.1",
     "load-grunt-tasks": "~0.2.0",
+    "grunt-env": "~0.4.1",
     "should": "~2.1.0"
   },
   "scripts": {

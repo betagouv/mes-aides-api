@@ -121,20 +121,6 @@ describe('openfisca', function() {
             var result = openfisca.mapFoyersFiscaux(situation);
             result.should.eql([{ declarants: ['demandeur', 'conjoint'], personnes_a_charge: [] }]);
         });
-
-        it('should throw an exception if one of the declarants is less than 18', function() {
-            var situation = {
-                individus: [
-                    {
-                        _id: 'demandeur',
-                        role: 'demandeur',
-                        dateDeNaissance: '2028-09-14'
-                    }
-                ]
-            };
-            var map = openfisca.mapFoyersFiscaux.bind(null, situation);
-            map.should.throw('Le déclarant de role "demandeur" a moins de 18 ans');
-        });
     });
 
     describe('mapIndividus', function() {
@@ -176,54 +162,69 @@ describe('openfisca', function() {
     });
 
     describe('mapLogement', function() {
-        it('should set menage status occupation to 4 when location non meublée', function() {
-            var logement = {
-                type: 'locataire',
-                locationType: 'nonmeuble'
-            };
-            var result = {};
-            openfisca.mapLogement(logement, result);
+        it('should set menage status occupation corresponding to logement type', function() {
+            // given
+            var logements = [
+                {
+                    type: 'locataire',
+                    locationType: 'nonmeuble',
+                    expectedSo: 4
+                },
+                {
+                    type: 'locataire',
+                    locationType: 'meublehotel',
+                    expectedSo: 5
+                },
+                {
+                    type: 'proprietaire',
+                    primoAccedant: true,
+                    expectedSo: 1
+                }
+            ];
+            var results = [];
 
-            result.so.should.be.exactly(4);
-        });
+            // when
+            logements.forEach(function(logement) {
+                var result = {};
+                openfisca.mapLogement(logement, result);
+                results.push(result.so);
+            });
 
-        it('should set menage status occupation to 5 when location meublée/hotel', function() {
-            var logement = {
-                type: 'locataire',
-                locationType: 'meublehotel'
-            };
-            var result = {};
-            openfisca.mapLogement(logement, result);
-
-            result.so.should.be.exactly(5);
-        });
-
-        it('should set menage status occupation to 1 when proprietaire primo-accédant', function() {
-            var logement = {
-                type: 'proprietaire',
-                primoAccedant: true
-            };
-            var result = {};
-            openfisca.mapLogement(logement, result);
-
-            result.so.should.be.exactly(1);
+            // then
+            for (var i = 0; i < 2; i++) {
+                results[i].should.be.exactly(logements[i].expectedSo);
+            }
         });
 
         it('should not set menage.so when logement type is unknown', function() {
-            var logement = {
-                type: 'unknown'
-            };
+            // given
+            var logement = {type: 'unknown'};
             var result = {};
+
+            // when
             openfisca.mapLogement(logement, result);
 
+            // then
             result.should.not.have.property('so');
         });
 
         it('should cast postal code to number', function() {
+            // given
             var logement = { adresse: { codePostal: '75011' }};
             var result = {};
+
+            // when
             openfisca.mapLogement(logement, result);
+
+            // then
             result.code_postal.should.be.exactly(75011);
+        });
+    });
+
+    describe('mapPatrimoine', function() {
+        it('should attach the declared patrimoine to the demandeur', function() {
+            // given
+            var situation = {patrimoine: {}};
         });
     });
 });
