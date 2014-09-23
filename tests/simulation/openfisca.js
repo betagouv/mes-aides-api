@@ -208,8 +208,8 @@ describe('openfisca', function() {
 
             // then
             result[0].should.have.property('epargne_non_remuneree', 1);
-            result[0].should.have.property('valeur_locative_immo_non_loue', 1);
-            result[0].should.have.property('valeur_locative_terrains_non_loue', 1);
+            result[0].should.have.property('valeur_locative_immo_non_loue');
+            result[0].should.have.property('valeur_locative_terrains_non_loue');
             result[0].should.have.property('revenus_locatifs', 0);
             result[0].should.have.property('revenus_capital', 0);
         });
@@ -245,7 +245,7 @@ describe('openfisca', function() {
             });
 
             // then
-            for (var i = 0; i < 2; i++) {
+            for (var i = 0; i < logements.length - 1; i++) {
                 results[i].should.be.exactly(logements[i].expectedSo);
             }
         });
