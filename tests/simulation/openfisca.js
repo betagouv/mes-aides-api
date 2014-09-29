@@ -250,7 +250,7 @@ describe('openfisca', function() {
             }
         });
 
-        it('should not set menage.so when logement type is unknown', function() {
+        it('should not set field menage.so when logement type is unknown', function() {
             // given
             var logement = {type: 'unknown'};
             var result = {};
@@ -260,6 +260,28 @@ describe('openfisca', function() {
 
             // then
             result.should.not.have.property('so');
+        });
+
+        it('should set field menage.coloc to 1 if location with colocataires', function() {
+            // given
+            var logements = [
+                {type: 'locataire', colocation: true},
+                {type: 'locataire', colocation: false},
+                {type: 'proprietaire', colocation: true}
+            ];
+            var results = [];
+
+            // when
+            logements.forEach(function(logement) {
+                var result = {};
+                results.push(result);
+                openfisca.mapLogement(logement, result);
+            });
+
+            // then
+            results[0].should.have.property('coloc', 1);
+            results[1].should.not.have.property('coloc');
+            results[2].should.not.have.property('coloc');
         });
     });
 });
