@@ -220,16 +220,26 @@ describe('openfisca', function() {
 
         it('should add a coloc field if logement is colocation', function() {
             // given
-            var situation = {
-                logement: {type: 'locataire', colocation: true},
-                individus: [{role: 'demandeur', dateDeNaissance: '1989-09-14'}]
-            };
+            var situations = [
+                {
+                    logement: {type: 'locataire', colocation: true},
+                    individus: [{role: 'demandeur', dateDeNaissance: '1989-09-14'}]
+                },
+                {
+                    logement: {type: 'locataire', colocation: false},
+                    individus: [{role: 'demandeur', dateDeNaissance: '1989-09-14'}]
+                }
+            ];
+            var results = [];
 
             // when
-            var result = openfisca.mapIndividus(situation);
+            situations.forEach(function(situation) {
+                results.push(openfisca.mapIndividus(situation));
+            });
 
             // then
-            result[0].should.have.property('coloc', 1);
+            results[0][0].should.have.property('coloc', 1);
+            results[1][0].should.not.have.property('coloc');
         });
     });
 
