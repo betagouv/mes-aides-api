@@ -194,14 +194,18 @@ describe('openfisca', function() {
 
         it('should map the given patrimoine in the situation on the demandeur', function() {
             // given
-            var situation = {patrimoine: {
-                revenusLocatifs: [],
-                valeurLocativeImmoNonLoue: 1,
-                valeurLocativeTerrainNonLoue: 1,
-                revenusDuCapital: [],
-                epargneSurLivret: 1,
-                epargneSansRevenus: 1
-            }, individus: [{role: 'demandeur', dateDeNaissance: '1989-09-14'}]};
+            var situation = {
+                logement: {},
+                patrimoine: {
+                    revenusLocatifs: [],
+                    valeurLocativeImmoNonLoue: 1,
+                    valeurLocativeTerrainNonLoue: 1,
+                    revenusDuCapital: [],
+                    epargneSurLivret: 1,
+                    epargneSansRevenus: 1
+                },
+                individus: [{role: 'demandeur', dateDeNaissance: '1989-09-14'}]
+            };
 
             // when
             var result = openfisca.mapIndividus(situation);
@@ -212,6 +216,20 @@ describe('openfisca', function() {
             result[0].should.have.property('valeur_locative_terrains_non_loue');
             result[0].should.have.property('revenus_locatifs', 0);
             result[0].should.have.property('revenus_capital', 0);
+        });
+
+        it('should add a coloc field if logement is colocation', function() {
+            // given
+            var situation = {
+                logement: {type: 'locataire', colocation: true},
+                individus: [{role: 'demandeur', dateDeNaissance: '1989-09-14'}]
+            };
+
+            // when
+            var result = openfisca.mapIndividus(situation);
+
+            // then
+            result[0].should.have.property('coloc', 1);
         });
     });
 
@@ -260,28 +278,6 @@ describe('openfisca', function() {
 
             // then
             result.should.not.have.property('so');
-        });
-
-        it('should set field menage.coloc to 1 if location with colocataires', function() {
-            // given
-            var logements = [
-                {type: 'locataire', colocation: true},
-                {type: 'locataire', colocation: false},
-                {type: 'proprietaire', colocation: true}
-            ];
-            var results = [];
-
-            // when
-            logements.forEach(function(logement) {
-                var result = {};
-                results.push(result);
-                openfisca.mapLogement(logement, result);
-            });
-
-            // then
-            results[0].should.have.property('coloc', 1);
-            results[1].should.not.have.property('coloc');
-            results[2].should.not.have.property('coloc');
         });
     });
 });
