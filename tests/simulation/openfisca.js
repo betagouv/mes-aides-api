@@ -19,7 +19,8 @@ describe('openfisca', function() {
                         _id: 'test',
                         role: 'test'
                     }
-                ]
+                ],
+                logement: {}
             };
 
             // when
@@ -45,7 +46,8 @@ describe('openfisca', function() {
                         _id: 'test',
                         role: 'test'
                     }
-                ]
+                ],
+                logement: {}
             };
 
             // when
