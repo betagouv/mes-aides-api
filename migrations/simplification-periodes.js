@@ -12,7 +12,7 @@ var stream = Situation.find({ status: 'test' }).stream();
 function convertRessources(ressources) {
     var byType = _.groupBy(ressources, 'type');
 
-    return _.flatten(_.map(byType, function(ressourceEntries, ressourceType) {
+    return _.compact(_.flatten(_.map(byType, function(ressourceEntries, ressourceType) {
         var periodes = {};
 
         ressourceEntries.forEach(function(entry) {
@@ -46,10 +46,11 @@ function convertRessources(ressources) {
 
         return _.map(periodes, function(nouveauMontant, nouvellePeriode) {
             // if (!_.isNumber(nouveauMontant)) console.log({ type: ressourceType, montant: nouveauMontant, periode: nouvellePeriode });
+            if (nouveauMontant === 0) return;
             return { type: ressourceType, montant: nouveauMontant, periode: nouvellePeriode };
         });
 
-    }));
+    })));
 }
 
 stream.on('data', function(situation) {
