@@ -1,12 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var openfisca = require('./lib/simulation/openfisca');
 var config = require('./lib/config/config');
-
-// Ping OpenFisca
-openfisca.ping();
-setInterval(openfisca.ping, 30*1000);
 
 // Setup mongoose
 require('./lib/config/mongoose')(mongoose, config);
