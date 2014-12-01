@@ -24,7 +24,7 @@ stream.on('data', function(acceptanceTest) {
     } else if (validated === true) {
         state = 'validated';
     } else {
-        state = 'error';
+        state = 'rejected';
     }
 
     acceptanceTest
