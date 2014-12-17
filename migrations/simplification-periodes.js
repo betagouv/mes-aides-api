@@ -28,15 +28,17 @@ function convertRessources(ressources) {
                 var dureeEnMois = 12;
                 var diviseur = dureeEnMois;
                 var debutPeriode = moment(entry.debutPeriode, 'YYYY-MM');
-                for (var i = 0; i < dureeEnMois; i++) {
-                    var periode = debutPeriode.clone().add(i, 'months');
+                var i, periode;
+
+                for (i = 0; i < dureeEnMois; i++) {
+                    periode = debutPeriode.clone().add(i, 'months');
                     if (periode.format('YYYY-MM') in periodes) {
                         montant -= periodes[periode.format('YYYY-MM')];
                         diviseur--;
                     }
                 }
-                for (var i = 0; i < dureeEnMois; i++) {
-                    var periode = debutPeriode.clone().add(i, 'months');
+                for (i = 0; i < dureeEnMois; i++) {
+                    periode = debutPeriode.clone().add(i, 'months');
                     if (!(periode.format('YYYY-MM') in periodes)) {
                         periodes[periode.format('YYYY-MM')] = Math.round(montant / diviseur);
                     }

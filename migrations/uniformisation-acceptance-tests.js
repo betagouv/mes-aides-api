@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var _ = require('lodash');
-var moment = require('moment');
 var config = require('../lib/config/config');
 
 require('../lib/config/mongoose')(mongoose, config);
@@ -24,7 +23,7 @@ stream.on('data', function(acceptanceTest) {
 });
 
 stream.on('end', function() {
-    console.log('completed!')
+    console.log('completed!');
     // process.exit();
 });
 
