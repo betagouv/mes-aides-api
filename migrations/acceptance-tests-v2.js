@@ -25,7 +25,8 @@ function migrateAcceptanceTests(stepDone) {
                     return _s.clean(_s.trim(tag.toLowerCase(), '[ ]'));
                 });
 
-                acceptanceTest.set('name', acceptanceTest.name.replace(regexp, '').trim());
+                var newName = acceptanceTest.name.replace(regexp, '').trim();
+                acceptanceTest.set('name', newName || 'Test sans titre');
                 acceptanceTest.set('keywords', tags);
             }
 
