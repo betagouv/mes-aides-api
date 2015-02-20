@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var _ = require('lodash');
 var es = require('event-stream');
 var config = require('../lib/config/config');
 
@@ -67,7 +66,7 @@ var situationsToMigrate = [
     '54899d43602ed649506ac7f6'
 ];
 
-var stream = Situation.find({ _id: { $in: situationsToMigrate } }).stream()
+Situation.find({ _id: { $in: situationsToMigrate } }).stream()
     .pipe(es.map(function (situation, done) {
         situation.individus.forEach(function (individu) {
             individu.ressources.forEach(function (ressource) {
