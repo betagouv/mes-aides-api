@@ -6,9 +6,19 @@ module.exports = function (grunt) {
         jshint: {
             options: { jshintrc: true },
             all: ['lib/**/*.js', 'migrations/*.js', '*.js']
+        },
+
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                    quiet: false
+                },
+                src: ['test/**/*.js']
+            }
         }
 
     });
 
-    grunt.registerTask('default', ['jshint']);
+    grunt.registerTask('default', ['jshint', 'mochaTest']);
 };
