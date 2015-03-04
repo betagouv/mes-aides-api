@@ -90,6 +90,14 @@ var possibleValues = [
         'link':'http://vosdroits.service-public.fr/particuliers/N19775.xhtml'
     },
     {
+        'id': 'rsa_non_majore',
+        'shortLabel': 'RSA (non majoré)'
+    },
+    {
+        'id': 'rsa_majore',
+        'shortLabel': 'RSA (majoré)'
+    },
+    {
         'id':'aide_logement',
         'label':'Aide au Logement',
         'shortLabel':'AL',
