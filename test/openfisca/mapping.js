@@ -40,4 +40,39 @@ describe('Ressources', function () {
 
     });
 
+    describe('# Mapping foyer fiscal', function() {
+        it('devrait mapper les pensions alimentaires versées du demandeur et du conjoint', function() {
+            var situation = {
+                dateDeValeur: new Date('2015-03-01'),
+                individus: [
+                    {
+                        role: 'demandeur',
+                        ressources: [
+                            {
+                                periode: '2013',
+                                type: 'rncPensionsAlimentairesVersees',
+                                montant: 3000
+                            }
+                        ]
+                    },
+                    {
+                        role: 'conjoint',
+                        ressources: [
+                            {
+                                periode: '2013',
+                                type: 'rncPensionsAlimentairesVersees',
+                                montant: 3000
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            var foyerFiscal = mapping.mapFoyerFiscal(situation);
+
+            foyerFiscal.f6el.should.have.ownProperty('2013');
+            foyerFiscal.f6el['2013'].should.equal(6000);
+        });
+    });
+
 });
