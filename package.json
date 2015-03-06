@@ -3,6 +3,10 @@
   "description": "mes-aides.gouv.fr REST API",
   "version": "0.1.1",
   "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sgmap/mes-aides-api"
+  },
   "dependencies": {
     "body-parser": "^1.9.0",
     "errorhandler": "^1.2.1",
