@@ -16,7 +16,7 @@ app.use(ludwigApi({
 
     mongoose: mongoose,
 
-    possibleValues: require('./config/ludwig'),
+    possibleValues: require('./lib/config/ludwig'),
 
     simulate: function (acceptanceTest, done) {
         Situation.findById(acceptanceTest.scenario.situationId).exec(function (err, situation) {
