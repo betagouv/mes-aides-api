@@ -41,7 +41,7 @@ describe('Ressources', function () {
     });
 
     describe('# Mapping foyer fiscal', function() {
-        it('devrait mapper les pensions alimentaires versées du demandeur et du conjoint', function() {
+        it('devrait sommer et inverser les pensions alimentaires versées du demandeur et du conjoint', function() {
             var situation = {
                 dateDeValeur: new Date('2015-03-01'),
                 individus: [
@@ -71,7 +71,7 @@ describe('Ressources', function () {
             var foyerFiscal = mapping.mapFoyerFiscal(situation);
 
             foyerFiscal.pensions_alimentaires_versees.should.have.ownProperty('2013');
-            foyerFiscal.pensions_alimentaires_versees['2013'].should.equal(6000);
+            foyerFiscal.pensions_alimentaires_versees['2013'].should.equal(-6000);
         });
     });
 
