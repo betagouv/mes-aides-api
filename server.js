@@ -24,8 +24,10 @@ if ('development' === env) {
 }
 
 // Start server
-app.listen(process.env.PORT, function () {
-    console.log('Express server listening on %d, in %s mode', process.env.PORT, app.get('env'));
+var port = process.env.PORT || 9000;
+
+app.listen(port, function () {
+    console.log('Express server listening on %d, in %s mode', port, app.get('env'));
 });
 
 exports = module.exports = app;
