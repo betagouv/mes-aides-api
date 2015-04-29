@@ -21,14 +21,12 @@
     "underscore.string": "^2.3.3"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-mocha-test": "^0.12.7",
-    "load-grunt-tasks": "^3.1.0",
-    "mocha": "^2.1.0",
-    "should": "^5.0.1"
+    "mocha": "^2.2.4",
+    "should": "^6.0.1",
+    "jshint": "^2.7.0",
+    "coffee-script": "^1.9.2"
   },
   "scripts": {
-    "test": "NODE_ENV=test grunt"
+    "test": "mocha && jshint lib *.js"
   }
 }
