@@ -14,7 +14,7 @@ module.exports = function (grunt) {
                     reporter: 'spec',
                     quiet: false
                 },
-                src: ['test/**/*.js']
+                src: ['test/**/*.js', 'test/**/*.coffee']
             }
         }
 
