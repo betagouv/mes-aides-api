@@ -44,9 +44,10 @@ describe 'Reverse mapping', ->
       actual.cmu_c.should.be.false
 
   describe 'of an uncomputable value', ->
+    REASON = 'tns'
     familleWithUncomputableRSA = _.clone OPENFISCA_FAMILLE
-    familleWithUncomputableRSA.rsa_non_calculable = '2014-11': true
+    familleWithUncomputableRSA.rsa_non_calculable = '2014-11': REASON
 
-    it 'should set the value to NaN', ->
-      reverseMap(familleWithUncomputableRSA, DATE_DE_VALEUR).rsa.should.be.NaN
+    it 'should set the value to the identifier of the uncomputability', ->
+      reverseMap(familleWithUncomputableRSA, DATE_DE_VALEUR).rsa.should.equal REASON
 
