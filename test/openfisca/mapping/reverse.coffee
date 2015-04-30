@@ -18,6 +18,7 @@ describe 'Reverse mapping', ->
     rsa: '2014-11': 1
     rsa_majore: '2014-11': 1
     rsa_non_majore: '2014-11': 1
+    rsa_non_calculable: '2014-11': ''
     asf: '2014-11': 1
     cf: '2014-11': 1
     ass: '2014-11': 1
