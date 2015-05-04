@@ -1,5 +1,5 @@
 var should = require('should');
-var mapping = require('../../lib/simulation/openfisca/mapping');
+var mapping = require('../../../lib/simulation/openfisca/mapping');
 
 describe('Ressources', function () {
 
