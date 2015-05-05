@@ -14,6 +14,7 @@ describe 'Reverse mapping', ->
     als: '2014-11': 1
     alf: '2014-11': 1
     aide_logement: '2014-11': 1
+    aide_logement_non_calculable: '2014-11': ''
     af: '2014-11': 1
     rsa: '2014-11': 1
     rsa_majore: '2014-11': 1
