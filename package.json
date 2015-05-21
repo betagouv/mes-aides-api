@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "body-parser": "^1.9.0",
+    "codes-postaux": "^1.0.1",
     "errorhandler": "^1.2.1",
     "event-stream": "^3.1.7",
     "express": "^4.9.7",
