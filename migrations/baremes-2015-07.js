@@ -47,17 +47,23 @@ function migrateAcceptanceTests(stepDone) {
                     acceptanceTest.expectedResults = [ expectedResult ];
             });
 
-            acceptanceTest.save();
-
             Situation.findById(acceptanceTest.scenario.situationId, function(err, situation) {
                 if (err) return done(err);
 
                 situation.dateDeValeur = TARGET_DATE;
 
+                if (situation.rfr) {
+                    acceptanceTest.description += '\nOn veut ' + situation.rfr.toFixed() + ' € de revenus nets, donc on déclare ';
+                    situation.rfr /= 0.9;  // tests were written without taking into account the 10% deduction on salaries to compute resources
+                    acceptanceTest.description += situation.rfr.toFixed() + ' € de revenus imposables.';
+                }
+
                 // shift all resources by one month
                 situation.individus.forEach(function(individu) {
                     individu.ressources.forEach(function(ressource) {
-                        if (ressource.periode.indexOf('-') == -1) return;  // modify only n-1, not n-2
+                        ressource.montant /= 0.9;  // tests were written without taking into account the 10% deduction on salaries to compute resources
+
+                        if (ressource.periode.indexOf('-') == -1) return;  // shift by one month only n-1, not n-2
 
                         var currentMonth = moment(ressource.periode, 'YYYY-MM');
                         currentMonth.add(1, 'month');
@@ -66,6 +72,7 @@ function migrateAcceptanceTests(stepDone) {
                     });
                 });
 
+                acceptanceTest.save();
                 situation.save(done);
             });
         }))
