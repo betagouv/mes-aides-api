@@ -37,7 +37,10 @@ var Situation = mongoose.model('Situation');
 var TARGET_DATE = new Date('2015-07-02');
 
 function migrateAcceptanceTests(stepDone) {
-    AcceptanceTest.find({ keywords: { $in: ['barêmes 1er juillet 2015'] } }).stream()
+    AcceptanceTest.find({ $and: [
+        { keywords: { $in: ['barêmes 1er juillet 2015'] } },
+        { keywords: { $not: { $in: ['dom'] } } }
+        ] }).stream()
         .pipe(es.map(function (acceptanceTest, done) {
             acceptanceTest.state = 'validated';
 
