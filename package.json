@@ -22,12 +22,13 @@
     "underscore.string": "^2.3.3"
   },
   "devDependencies": {
-    "mocha": "^2.2.4",
-    "should": "^6.0.1",
+    "coffee-script": "^1.9.2",
+    "jscs": "^1.13.1",
     "jshint": "^2.7.0",
-    "coffee-script": "^1.9.2"
+    "mocha": "^2.2.4",
+    "should": "^6.0.1"
   },
   "scripts": {
-    "test": "mocha && jshint lib *.js"
+    "test": "mocha && jshint lib *.js && jscs lib *.js"
   }
 }
