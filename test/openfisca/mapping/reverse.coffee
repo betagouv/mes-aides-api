@@ -26,6 +26,7 @@ describe 'Reverse mapping', ->
     paje_base: '2014-11': 1
     bourse_college: '2014-11': 1
     bourse_lycee: '2014-11': 1
+    paris_logement_familles: '2014-11': 1
 
   DATE_DE_VALEUR = new Date '2014-11'
 
