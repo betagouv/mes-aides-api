@@ -13,6 +13,7 @@
     "errorhandler": "^1.2.1",
     "event-stream": "^3.1.7",
     "express": "^4.9.7",
+    "frozen-moment": "^0.1.1",
     "lodash": "^2.4.1",
     "ludwig-api": "^1.0.0",
     "moment": "^2.8.3",
