@@ -1,5 +1,5 @@
-individuHelpers = require '../../../lib/simulation/openfisca/mapping/index'
-
+individuHelpers = require '../../../lib/simulation/openfisca/mapping/common'
+should = require 'should'
 
 describe 'isIndividuValid', ->
   SITUATION =
@@ -12,27 +12,33 @@ describe 'isIndividuValid', ->
       dateDeNaissance: new Date '1940-01'
 
     it 'should be valid', ->
-      individuHelpers.isIndividuValid(SITUATION, target).should.be.true
+      individuHelpers.isIndividuValid(target, SITUATION).should.be.ok
 
   describe 'a child', ->
     target =
       role: 'enfant'
-      situationsPro: []
 
     describe 'under 25', ->
-      dateDeNaissance: new Date '2010-01'
+      before ->
+          target['situationsPro'] = []
+          target['dateDeNaissance'] = new Date '2010-01'
 
       it 'should be valid', ->
-        individuHelpers.isIndividuValid(SITUATION, target).should.be.true
+        individuHelpers.isIndividuValid(target, SITUATION).should.be.ok
 
     describe 'over 25', ->
-      dateDeNaissance: new Date '1970-01'
+      before ->
+        target['situationsPro'] = []
+        target['dateDeNaissance'] = new Date '1970-01'
 
       it 'should not be valid', ->
-        individuHelpers.isIndividuValid(SITUATION, target).should.be.false
+        should(individuHelpers.isIndividuValid(target, SITUATION)).not.be.ok
 
       describe 'disabled', ->
-        target.situationsPro.push { situation: 'handicap' }
+        before ->
+          target['situationsPro'] = []
+          target['dateDeNaissance'] = new Date '1970-01'
+          target.situationsPro.push { situation: 'handicap' }
 
         it 'should be valid', ->
-          individuHelpers.isIndividuValid(SITUATION, target).should.be.true
+          individuHelpers.isIndividuValid(target, SITUATION).should.be.ok
