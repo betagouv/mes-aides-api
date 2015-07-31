@@ -20,7 +20,7 @@ describe 'isIndividuValid', ->
 
     describe 'under 25', ->
       before ->
-          target['situationsPro'] = []
+          target.situationsPro = []
           target['dateDeNaissance'] = new Date '2010-01'
 
       it 'should be valid', ->
@@ -28,7 +28,6 @@ describe 'isIndividuValid', ->
 
     describe 'over 25', ->
       before ->
-        target['situationsPro'] = []
         target['dateDeNaissance'] = new Date '1970-01'
 
       it 'should not be valid', ->
@@ -36,7 +35,6 @@ describe 'isIndividuValid', ->
 
       describe 'disabled', ->
         before ->
-          target['situationsPro'] = []
           target['dateDeNaissance'] = new Date '1970-01'
           target.situationsPro.push { situation: 'handicap' }
 
