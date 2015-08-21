@@ -28,9 +28,14 @@ describe 'Reverse mapping', ->
     bourse_lycee: '2014-11': 1
     paris_logement_familles: '2014-11': 1
 
-  DATE_DE_VALEUR = new Date '2014-11'
+  OPENFISCA_RESPONSE =
+    value: [familles: [OPENFISCA_FAMILLE]]
 
-  actual = reverseMap OPENFISCA_FAMILLE, DATE_DE_VALEUR
+  SITUATION =
+    dateDeValeur: new Date '2014-11'
+    individus: [ressources:[]]
+
+  actual = reverseMap OPENFISCA_RESPONSE, SITUATION
 
   it 'should remove unused properties', ->
     actual.should.not.have.property 'id'
@@ -50,7 +55,9 @@ describe 'Reverse mapping', ->
     REASON = 'tns'
     familleWithUncomputableRSA = _.clone OPENFISCA_FAMILLE
     familleWithUncomputableRSA.rsa_non_calculable = '2014-11': REASON
+    openfiscaResponseWithUncomputableRSA =
+      value: [familles: [familleWithUncomputableRSA]]
 
     it 'should set the value to the identifier of the uncomputability', ->
-      reverseMap(familleWithUncomputableRSA, DATE_DE_VALEUR).rsa.should.equal REASON
+      reverseMap(openfiscaResponseWithUncomputableRSA, SITUATION).rsa.should.equal REASON
 
