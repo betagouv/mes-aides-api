@@ -65,7 +65,8 @@ describe('Ressources', function () {
                             }
                         ]
                     }
-                ]
+                ],
+                ressourcesYearMoins2Captured: true
             };
 
             var foyerFiscal = mapping.mapFoyerFiscal(situation);
