@@ -3,6 +3,7 @@
     "beforeOpeningCurlyBrace": true
   },
   "requireSpaceBeforeBlockStatements": true,
+  "disallowMultipleSpaces": {"allowEOLComments": true},
   "requireSpaceAfterKeywords": [
     "do",
     "done",
@@ -14,5 +15,6 @@
     "try",
     "catch",
     "while"
-  ]
+  ],
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties"
 }
