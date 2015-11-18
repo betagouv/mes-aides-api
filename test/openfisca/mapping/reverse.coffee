@@ -29,8 +29,11 @@ describe 'Reverse mapping', ->
     paris_logement_familles: '2014-11': 1
     adpa: '2014-11': 1
 
+  INDIVIDU =
+    aah: '2014-11': 2
+
   OPENFISCA_RESPONSE =
-    value: [familles: [OPENFISCA_FAMILLE]]
+    value: [familles: [OPENFISCA_FAMILLE], individus: [INDIVIDU]]
 
   SITUATION =
     dateDeValeur: new Date '2014-11'
@@ -40,6 +43,9 @@ describe 'Reverse mapping', ->
 
   it 'should remove unused properties', ->
     actual.should.not.have.property 'id'
+
+  it 'should extract individual prestations', ->
+    actual.aah.should.equal 2
 
   describe 'of an amount', ->
     it 'should round', ->
