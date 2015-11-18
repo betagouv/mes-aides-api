@@ -63,7 +63,7 @@ describe 'Reverse mapping', ->
     familleWithUncomputableRSA = _.clone OPENFISCA_FAMILLE
     familleWithUncomputableRSA.rsa_non_calculable = '2014-11': REASON
     openfiscaResponseWithUncomputableRSA =
-      value: [familles: [familleWithUncomputableRSA]]
+      value: [familles: [familleWithUncomputableRSA], individus: []]
 
     it 'should set the value to the identifier of the uncomputability', ->
       reverseMap(openfiscaResponseWithUncomputableRSA, SITUATION).rsa.should.equal REASON
