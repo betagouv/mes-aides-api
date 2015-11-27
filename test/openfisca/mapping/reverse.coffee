@@ -27,6 +27,7 @@ describe 'Reverse mapping', ->
     bourse_college: '2014-11': 1
     bourse_lycee: '2014-11': 1
     paris_logement_familles: '2014-11': 1
+    adpa: '2014-11': 1
 
   OPENFISCA_RESPONSE =
     value: [familles: [OPENFISCA_FAMILLE]]
