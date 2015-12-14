@@ -27,9 +27,14 @@ describe 'Reverse mapping', ->
     bourse_college: '2014-11': 1
     bourse_lycee: '2014-11': 1
     paris_logement_familles: '2014-11': 1
+    adpa: '2014-11': 1
+
+  INDIVIDU =
+    aah: '2014-11': 2
+    aah_non_calculable: '2014-11': ''
 
   OPENFISCA_RESPONSE =
-    value: [familles: [OPENFISCA_FAMILLE]]
+    value: [familles: [OPENFISCA_FAMILLE], individus: [INDIVIDU]]
 
   SITUATION =
     dateDeValeur: new Date '2014-11'
@@ -39,6 +44,9 @@ describe 'Reverse mapping', ->
 
   it 'should remove unused properties', ->
     actual.should.not.have.property 'id'
+
+  it 'should extract individual prestations', ->
+    actual.aah.should.equal 2
 
   describe 'of an amount', ->
     it 'should round', ->
@@ -56,7 +64,7 @@ describe 'Reverse mapping', ->
     familleWithUncomputableRSA = _.clone OPENFISCA_FAMILLE
     familleWithUncomputableRSA.rsa_non_calculable = '2014-11': REASON
     openfiscaResponseWithUncomputableRSA =
-      value: [familles: [familleWithUncomputableRSA]]
+      value: [familles: [familleWithUncomputableRSA], individus: []]
 
     it 'should set the value to the identifier of the uncomputability', ->
       reverseMap(openfiscaResponseWithUncomputableRSA, SITUATION).rsa.should.equal REASON
