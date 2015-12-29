@@ -28,6 +28,7 @@ describe 'Reverse mapping', ->
     bourse_lycee: '2014-11': 1
     paris_logement_familles: '2014-11': 1
     adpa: '2014-11': 1
+    ppa: '2014-11': 1
 
   INDIVIDU =
     aah: '2014-11': 2
