@@ -8,7 +8,7 @@ describe 'isIndividuValid', ->
   describe 'an adult', ->
     target =
       role: 'demandeur'
-      situationsPro: []
+      specificSituations: []
       dateDeNaissance: new Date '1940-01'
 
     it 'should be valid', ->
@@ -20,7 +20,7 @@ describe 'isIndividuValid', ->
 
     describe 'under 25', ->
       before ->
-          target.situationsPro = []
+          target.specificSituations = []
           target['dateDeNaissance'] = new Date '2010-01'
 
       it 'should be valid', ->
@@ -36,7 +36,7 @@ describe 'isIndividuValid', ->
       describe 'disabled', ->
         before ->
           target['dateDeNaissance'] = new Date '1970-01'
-          target.situationsPro.push { situation: 'handicap' }
+          target.specificSituations.push { situation: 'handicap' }
 
         it 'should be valid', ->
           individuHelpers.isIndividuValid(target, SITUATION).should.be.ok
