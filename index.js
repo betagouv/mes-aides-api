@@ -22,7 +22,9 @@ app.use(ludwigApi({
         Situation.findById(acceptanceTest.scenario.situationId).exec(function (err, situation) {
             if (err) return done(err);
             if (!situation) return done(new Error('Situation not found'));
-            situation.simulate(done);
+            situation.simulate(function(err, result) {
+                return done(err, result && result.calculatedPrestations);
+            });
         });
     },
 
