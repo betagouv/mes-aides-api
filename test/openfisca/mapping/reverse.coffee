@@ -27,6 +27,13 @@ describe 'Reverse mapping', ->
     bourse_college: '2014-11': 1
     bourse_lycee: '2014-11': 1
     paris_logement_familles: '2014-11': 1
+    paris_forfait_famille: '2014-11': 1
+    paris_logement_psol: '2014-11': 1
+    paris_logement: '2014-11': 1
+    paris_logement_plfm: '2014-11': 1
+    paris_logement_aspeh: '2014-11': 1
+    paris_energie_famille: '2014-11': 1
+    paris_complement_sante: '2014-11': 1
     adpa: '2014-11': 1
     ppa: '2014-11': 1
 
@@ -44,21 +51,21 @@ describe 'Reverse mapping', ->
   actual = reverseMap OPENFISCA_RESPONSE, SITUATION
 
   it 'should remove unused properties', ->
-    actual.should.not.have.property 'id'
+    actual.calculatedPrestations.should.not.have.property 'id'
 
   it 'should extract individual prestations', ->
-    actual.aah.should.equal 2
+    actual.calculatedPrestations.aah.should.equal 2
 
   describe 'of an amount', ->
     it 'should round', ->
-      actual.aspa.should.equal 1.2
+      actual.calculatedPrestations.aspa.should.equal 1.2
 
     it 'should annualize a yearly amount', ->
-      actual.acs.should.equal 1 * 12
+      actual.calculatedPrestations.acs.should.equal 1 * 12
 
   describe 'of a boolean', ->
     it 'should be a pass-through', ->
-      actual.cmu_c.should.be.false
+      actual.calculatedPrestations.cmu_c.should.be.false
 
   describe 'of an uncomputable value', ->
     REASON = 'tns'
@@ -68,5 +75,5 @@ describe 'Reverse mapping', ->
       value: [familles: [familleWithUncomputableRSA], individus: []]
 
     it 'should set the value to the identifier of the uncomputability', ->
-      reverseMap(openfiscaResponseWithUncomputableRSA, SITUATION).rsa.should.equal REASON
+      reverseMap(openfiscaResponseWithUncomputableRSA, SITUATION).calculatedPrestations.rsa.should.equal REASON
 
