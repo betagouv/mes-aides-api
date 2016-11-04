@@ -17,10 +17,10 @@ describe 'isIndividuValid', ->
   describe 'a child', ->
     target =
       role: 'enfant'
+      specificSituations: []
 
     describe 'under 25', ->
       before ->
-          target.specificSituations = []
           target['dateDeNaissance'] = new Date '2010-01'
 
       it 'should be valid', ->
@@ -36,7 +36,7 @@ describe 'isIndividuValid', ->
       describe 'disabled', ->
         before ->
           target['dateDeNaissance'] = new Date '1970-01'
-          target.specificSituations.push { situation: 'handicap' }
+          target.specificSituations.push 'handicap'
 
         it 'should be valid', ->
           individuHelpers.isIndividuValid(target, SITUATION).should.be.ok
