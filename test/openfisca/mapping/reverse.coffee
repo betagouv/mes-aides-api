@@ -40,6 +40,7 @@ describe 'Reverse mapping', ->
   INDIVIDU =
     aah: '2014-11': 2
     aah_non_calculable: '2014-11': ''
+    specificSituations: []
 
   OPENFISCA_RESPONSE =
     value: [familles: [OPENFISCA_FAMILLE], individus: [INDIVIDU]]

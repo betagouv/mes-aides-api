@@ -22,7 +22,8 @@ describe('Ressources', function () {
                             montant: 300
                         }
                     ],
-                    interruptedRessources: ['stage']
+                    interruptedRessources: ['stage'],
+                    specificSituations: [],
                 }
             ]
         };
@@ -53,7 +54,8 @@ describe('Ressources', function () {
                                 type: 'rncPensionsAlimentairesVersees',
                                 montant: 3000
                             }
-                        ]
+                        ],
+                        specificSituations: [],
                     },
                     {
                         role: 'conjoint',
@@ -63,7 +65,8 @@ describe('Ressources', function () {
                                 type: 'rncPensionsAlimentairesVersees',
                                 montant: 3000
                             }
-                        ]
+                        ],
+                        specificSituations: [],
                     }
                 ],
                 ressourcesYearMoins2Captured: true
