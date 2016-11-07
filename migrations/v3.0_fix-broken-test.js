@@ -7,8 +7,6 @@ require('../lib/config/mongoose')(mongoose, config);
 
 var Situation = mongoose.model('Situation');
 
-// When running this migration script, situationsPro must be temporarily added to the situation model.
-
 Situation.find({ status: 'test' }).stream()
     .pipe(es.map(function (situation, done) {
         var isSituationUpdated = false;
