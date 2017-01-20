@@ -13,7 +13,7 @@ System dependencies
 
 ### Ubuntu
 
-Make sure `build-essential`, `mongodb`, `node` v0.10, `grunt` and `bower` are installed on your machine
+Make sure `build-essential`, `mongodb` and `node` v0.10 are installed on your machine
 
 ```sh
 sudo apt-get install build-essential
@@ -27,12 +27,6 @@ The runtime is Node 0.10.
 
 You can for example use [`nvm`](https://github.com/creationix/nvm) to install this specific version.
 
-Once you have Node and npm installed, run:
-
-```sh
-npm install --global grunt-cli
-```
-
 
 Application
 -----------
@@ -41,7 +35,6 @@ Application
 git clone https://github.com/sgmap/mes-aides-api.git
 cd mes-aides-api
 npm install
-grunt
 ```
 
 ### Development mode
