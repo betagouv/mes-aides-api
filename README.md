@@ -18,6 +18,7 @@ Make sure `build-essential`, `mongodb`, `node` v0.10, `grunt` and `bower` are in
 ```sh
 sudo apt-get install build-essential
 sudo apt-get install mongodb
+sudo apt-get install libkrb5-dev
 ```
 
 ### For all platforms
