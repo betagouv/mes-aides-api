@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "coffee-script": "^1.9.2",
-    "jscs": "^1.13.1",
+    "jscs": "^3.0.7",
     "jshint": "^2.7.0",
     "mocha": "^2.2.4",
     "should": "^6.0.1"
