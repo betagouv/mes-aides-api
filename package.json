@@ -26,8 +26,8 @@
     "coffee-script": "^1.9.2",
     "jscs": "^3.0.7",
     "jshint": "^2.7.0",
-    "mocha": "^2.2.4",
-    "should": "^6.0.1"
+    "mocha": "^3.2.0",
+    "should": "^11.2.0"
   },
   "scripts": {
     "test": "mocha && jshint lib *.js && jscs lib *.js"
