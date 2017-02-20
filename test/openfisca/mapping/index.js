@@ -79,4 +79,45 @@ describe('Ressources', function () {
         });
     });
 
+    describe('# Mapping individu', function() {
+
+        var individu_object = {
+            role: "demandeur",
+            specificSituations: []
+        };
+
+        describe('sans patrimoine', function () {
+
+            var situation_sans_patrimoine = {
+                dateDeValeur: new Date('2015-03-01'),
+                individus: [individu_object]
+            };
+
+            var individu = mapping.mapIndividus(situation_sans_patrimoine)[0];
+
+            it('devrait mettre à zéro les informations patrimoniales', function () {
+                individu.epargne_non_remuneree.should.have.ownProperty('2012-01');
+                individu.epargne_non_remuneree['2012-01'].should.equal(0);
+            });
+        });
+
+        describe('avec patrimoine', function () {
+
+            var situation_avec_patrimoine = {
+                dateDeValeur: new Date('2015-03-01'),
+                individus: [individu_object],
+                patrimoine: {
+                    epargneSansRevenus: 100,
+                    captured: true
+                }
+            };
+
+            var individu = mapping.mapIndividus(situation_avec_patrimoine)[0];
+
+            it('devrait prendre en compte les informations patrimoniales', function () {
+                individu.epargne_non_remuneree.should.have.ownProperty('2012-01');
+                individu.epargne_non_remuneree['2012-01'].should.equal(100);
+            });
+        });
+    });
 });
