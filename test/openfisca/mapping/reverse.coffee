@@ -60,9 +60,6 @@ describe 'Reverse mapping', ->
     it 'should round', ->
       actual.calculatedPrestations.aspa.should.equal 1.2
 
-    it 'should annualize a yearly amount', ->
-      actual.calculatedPrestations.acs.should.equal 1 * 12
-
   describe 'of a boolean', ->
     it 'should be a pass-through', ->
       actual.calculatedPrestations.cmu_c.should.be.false
