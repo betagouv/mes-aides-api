@@ -31,11 +31,7 @@ function migrateAllSituations(migrationFunction) {
 }
 
 function setSituationVisibility(situationId, visibility, callback) {
-    if (visibility) {
-       Situation.findById(situationId).update({}, { status: 'test' }).exec(callback);
-    } else {
-        Situation.findById(situationId).update({}, { status: 'new' }).exec(callback);
-    }
+    Situation.findById(situationId).update({}, { status: visibility ? 'test' : 'new' }).exec(callback);
 }
 
 module.exports = {
