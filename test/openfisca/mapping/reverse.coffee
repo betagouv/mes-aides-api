@@ -33,6 +33,7 @@ describe 'Reverse mapping', ->
     paris_energie_famille: '2014-11': 1
     paris_complement_sante: '2014-11': 1
     adpa: '2014-11': 1
+    rennes_metropole_transport: '2014-11': 1
     ppa: '2014-11': 1
 
   INDIVIDU =
