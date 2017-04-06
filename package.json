@@ -14,7 +14,7 @@
     "event-stream": "^3.1.7",
     "express": "^4.9.7",
     "frozen-moment": "^0.4.0",
-    "lodash": "^2.4.1",
+    "lodash": "^4.17.4",
     "ludwig-api": "^1.2.0",
     "moment": "^2.8.3",
     "mongoose": "^4.8.3",
