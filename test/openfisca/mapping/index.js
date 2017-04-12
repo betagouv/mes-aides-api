@@ -1,4 +1,5 @@
 var should = require('should');
+var _ = require('lodash');
 var mapping = require('../../../lib/simulation/openfisca/mapping');
 
 describe('Ressources', function () {
@@ -39,6 +40,139 @@ describe('Ressources', function () {
             individu.indemnites_stage.should.not.have.ownProperty('2015-03');
         });
 
+    });
+
+    describe('# Estimation des revenus N-2', function () {
+        // Le demandeur touche en réalité 1200 d'ARE par mois depuis 6 mois. Il déclare 7200 de revenus sur l'année glissante.
+        // Mes-Aides ne connait que le montant sur l'année glissante et sur chacun des trois derniers mois. Il répartit de manière uniforme les revenus sur les mois M-12 à M-4.
+        var situation = {
+            dateDeValeur: new Date('2017-04-12'),
+            individus: [
+                {
+                    role: 'demandeur',
+                    ressources: [
+                        {
+                            periode: '2017-03',
+                            type: 'allocationsChomage',
+                            montant: 1200
+                        },
+                        {
+                            periode: '2017-02',
+                            type: 'allocationsChomage',
+                            montant: 1200
+                        },
+                        {
+                            periode: '2017-01',
+                            type: 'allocationsChomage',
+                            montant: 1200
+                        },
+                        {
+                            periode: '2016-12',
+                            type: 'allocationsChomage',
+                            montant: 400
+                        },
+                        {
+                            periode: '2016-11',
+                            type: 'allocationsChomage',
+                            montant: 400
+                        },
+                        {
+                            periode: '2016-10',
+                            type: 'allocationsChomage',
+                            montant: 400
+                        },
+                        {
+                            periode: '2016-09',
+                            type: 'allocationsChomage',
+                            montant: 400
+                        },
+                        {
+                            periode: '2016-08',
+                            type: 'allocationsChomage',
+                            montant: 400
+                        },
+                        {
+                            periode: '2016-07',
+                            type: 'allocationsChomage',
+                            montant: 400
+                        },
+                        {
+                            periode: '2016-06',
+                            type: 'allocationsChomage',
+                            montant: 400
+                        },
+                        {
+                            periode: '2016-05',
+                            type: 'allocationsChomage',
+                            montant: 400
+                        },
+                        {
+                            periode: '2016-04',
+                            type: 'allocationsChomage',
+                            montant: 400
+                        },
+                    ],
+                    specificSituations: [],
+                    interruptedRessources: [],
+                }
+            ]
+        };
+
+        var situationWithYearMoins2Captured = _.assign({}, situation, {ressourcesYearMoins2Captured: true});
+
+        it('devrait supposer que les revenus N-2 sont égaux aux revenus de l’année glissante si les revenus N-2 n’ont pas été renseignés', function () {
+            var individu = mapping.mapIndividus(situation)[0];
+            // Les revenus estimés pour N-2 sont étalés sur 12 mois
+            var expectedMappingResult = {
+                '2017-04': 1200,  // prolongation
+                '2017-03': 1200,
+                '2017-02': 1200,
+                '2017-01': 1200,
+                '2016-12': 400,
+                '2016-11': 400,
+                '2016-10': 400,
+                '2016-09': 400,
+                '2016-08': 400,
+                '2016-07': 400,
+                '2016-06': 400,
+                '2016-05': 400,
+                '2016-04': 400,
+                '2015-12': 600,
+                '2015-11': 600,
+                '2015-10': 600,
+                '2015-09': 600,
+                '2015-08': 600,
+                '2015-07': 600,
+                '2015-06': 600,
+                '2015-05': 600,
+                '2015-04': 600,
+                '2015-03': 600,
+                '2015-02': 600,
+                '2015-01': 600,
+            }
+            should.deepEqual(individu.chomage_net, expectedMappingResult);
+        });
+
+        it('ne devrait pas supposer que les revenus N-2 sont égaux aux revenus de l’année glissante si les revenus N-2 ont été renseignés', function () {
+            var individu = mapping.mapIndividus(situationWithYearMoins2Captured)[0];
+            // Les revenus estimés pour N-2 sont étalés sur 12 mois
+            var expectedMappingResult = {
+                '2017-04': 1200,  // prolongation
+                '2017-03': 1200,
+                '2017-02': 1200,
+                '2017-01': 1200,
+                '2016-12': 400,
+                '2016-11': 400,
+                '2016-10': 400,
+                '2016-09': 400,
+                '2016-08': 400,
+                '2016-07': 400,
+                '2016-06': 400,
+                '2016-05': 400,
+                '2016-04': 400,
+            }
+            should.deepEqual(individu.chomage_net, expectedMappingResult);
+        });
     });
 
     describe('# Mapping foyer fiscal', function() {
