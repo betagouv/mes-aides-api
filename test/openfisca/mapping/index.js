@@ -155,7 +155,6 @@ describe('Ressources', function () {
 
         it('ne devrait pas supposer que les revenus N-2 sont égaux aux revenus de l’année glissante si les revenus N-2 ont été renseignés', function () {
             var individu = mapping.mapIndividus(situationWithYearMoins2Captured)[0];
-            // Les revenus estimés pour N-2 sont étalés sur 12 mois
             var expectedMappingResult = {
                 '2017-04': 1200,  // prolongation
                 '2017-03': 1200,
