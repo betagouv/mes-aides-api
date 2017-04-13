@@ -2,9 +2,9 @@ var should = require('should');
 var _ = require('lodash');
 var mapping = require('../../../lib/simulation/openfisca/mapping');
 
-describe('Ressources', function () {
+describe('Resources mapping', function () {
 
-    describe('# Interruption / Prolongation', function () {
+    describe('Prolongation', function () {
 
         var situation = {
             dateDeValeur: new Date('2015-03-01'),
@@ -31,18 +31,18 @@ describe('Ressources', function () {
 
         var individu = mapping.mapIndividus(situation)[0];
 
-        it('devrait copier les ressources encore perçues sur le mois courant', function () {
+        it('should by default project on the current month the resources declared for the last month', function () {
             individu.revenus_stage_formation_pro.should.have.ownProperty('2015-03');
             individu.revenus_stage_formation_pro['2015-03'].should.equal(300);
         });
 
-        it('ne devrait pas copier les ressources dont la perception est interrompue sur le mois courant', function () {
+        it('should not project on the current month the resources declared for the last month if this resource has been declared interrupted', function () {
             individu.indemnites_stage.should.not.have.ownProperty('2015-03');
         });
 
     });
 
-    describe('# Estimation des revenus N-2', function () {
+    describe('N-2 resources estimation', function () {
         // Le demandeur touche en réalité 1200 d'ARE par mois depuis 6 mois. Il déclare 7200 de revenus sur l'année glissante.
         // Mes-Aides ne connait que le montant sur l'année glissante et sur chacun des trois derniers mois. Il répartit de manière uniforme les revenus sur les mois M-12 à M-4.
         var situation = {
@@ -120,7 +120,7 @@ describe('Ressources', function () {
 
         var situationWithYearMoins2Captured = _.assign({}, situation, {ressourcesYearMoins2Captured: true});
 
-        it('devrait supposer que les revenus N-2 sont égaux aux revenus de l’année glissante si les revenus N-2 n’ont pas été renseignés', function () {
+        it('should assume the resources for N-2 are equals to the resources for the last rolling year if the N-2 resources haven’t been declared', function () {
             var individu = mapping.mapIndividus(situation)[0];
             // Les revenus estimés pour N-2 sont étalés sur 12 mois
             var expectedMappingResult = {
@@ -153,7 +153,7 @@ describe('Ressources', function () {
             should.deepEqual(individu.chomage_net, expectedMappingResult);
         });
 
-        it('ne devrait pas supposer que les revenus N-2 sont égaux aux revenus de l’année glissante si les revenus N-2 ont été renseignés', function () {
+        it('should not assume the resources for N-2 are equals to the resources for the last rolling year if the N-2 resources have been declared', function () {
             var individu = mapping.mapIndividus(situationWithYearMoins2Captured)[0];
             var expectedMappingResult = {
                 '2017-04': 1200,  // prolongation
@@ -174,8 +174,8 @@ describe('Ressources', function () {
         });
     });
 
-    describe('# Mapping foyer fiscal', function() {
-        it('devrait sommer et inverser les pensions alimentaires versées du demandeur et du conjoint', function() {
+    describe('Foyer fiscal mapping', function() {
+        it('should sum pensions alimentaires versées for the demandeur and conjoint and take the opposite', function() {
             var situation = {
                 dateDeValeur: new Date('2015-03-01'),
                 individus: [
