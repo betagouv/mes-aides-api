@@ -1,9 +1,10 @@
 var should = require('should');
-var mapping = require('../../../lib/simulation/openfisca/mapping');
+var _ = require('lodash');
+var mapping = require('../lib/simulation/openfisca/mapping');
 
-describe('Ressources', function () {
+describe('Resources mapping', function () {
 
-    describe('# Interruption / Prolongation', function () {
+    describe('Prolongation', function () {
 
         var situation = {
             dateDeValeur: new Date('2015-03-01'),
@@ -30,19 +31,37 @@ describe('Ressources', function () {
 
         var individu = mapping.mapIndividus(situation)[0];
 
-        it('devrait copier les ressources encore perçues sur le mois courant', function () {
+        it('should by default project on the current month the resources declared for the last month', function () {
             individu.revenus_stage_formation_pro.should.have.ownProperty('2015-03');
             individu.revenus_stage_formation_pro['2015-03'].should.equal(300);
         });
 
-        it('ne devrait pas copier les ressources dont la perception est interrompue sur le mois courant', function () {
+        it('should not project on the current month the resources declared for the last month if this resource has been declared interrupted', function () {
             individu.indemnites_stage.should.not.have.ownProperty('2015-03');
         });
 
     });
 
-    describe('# Mapping foyer fiscal', function() {
-        it('devrait sommer et inverser les pensions alimentaires versées du demandeur et du conjoint', function() {
+    describe('N-2 resources estimation', function () {
+        var situation = require('./assets/NM2Situation')
+
+        var situationWithYearMoins2Captured = _.assign({}, situation, {ressourcesYearMoins2Captured: true});
+
+        it('should assume the resources for N-2 are equals to the resources for the last rolling year if the N-2 resources haven’t been declared', function () {
+            var individu = mapping.mapIndividus(situation)[0];
+            var expectedMappingResult = require('./assets/NM2OutputWithEstimation')
+            should.deepEqual(individu.chomage_net, expectedMappingResult);
+        });
+
+        it('should not assume the resources for N-2 are equals to the resources for the last rolling year if the N-2 resources have been declared', function () {
+            var individu = mapping.mapIndividus(situationWithYearMoins2Captured)[0];
+            var expectedMappingResult = require('./assets/NM2OutputWithoutEstimation')
+            should.deepEqual(individu.chomage_net, expectedMappingResult);
+        });
+    });
+
+    describe('Foyer fiscal mapping', function() {
+        it('should sum pensions alimentaires versées for the demandeur and conjoint and take the opposite', function() {
             var situation = {
                 dateDeValeur: new Date('2015-03-01'),
                 individus: [

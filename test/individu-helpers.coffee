@@ -1,4 +1,4 @@
-individuHelpers = require '../../../lib/simulation/openfisca/mapping/common'
+individuHelpers = require '../lib/simulation/openfisca/mapping/common'
 should = require 'should'
 
 describe 'isIndividuValid', ->
