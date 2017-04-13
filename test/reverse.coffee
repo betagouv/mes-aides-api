@@ -1,6 +1,6 @@
 _ = require 'lodash'
 
-reverseMap = require '../../../lib/simulation/openfisca/mapping/reverse'
+reverseMap = require '../lib/simulation/openfisca/mapping/reverse'
 
 
 describe 'Reverse mapping', ->
