@@ -30,6 +30,9 @@
     "mocha": "^3.2.0",
     "should": "^11.2.0"
   },
+  "engines": {
+    "node": ">=4 <7"
+  },
   "scripts": {
     "test": "mocha && jshint lib *.js && jscs lib *.js"
   }
