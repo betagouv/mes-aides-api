@@ -6,6 +6,7 @@ var ressourceMapping = {
     'allocationSecurisationPro' : 'allocation_securisation_professionnelle',
     'autresRevenusTns' : 'tns_autres_revenus',
     'autresRevenusTnsActiviteType': 'tns_autres_revenus_type_activite',
+    'bourseEnseignementSup': 'bourse_enseignement_sup',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
