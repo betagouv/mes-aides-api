@@ -15,6 +15,7 @@ var ressourceMapping = {
     'gainsExceptionnels': 'gains_exceptionnels',
     'indChomagePartiel': 'indemnites_chomage_partiel',
     'indJourAccidentDuTravail': 'indemnites_journalieres_accident_travail',
+    'indJourMaladieProf': 'indemnites_journalieres_maladie_professionnelle',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
