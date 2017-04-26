@@ -14,6 +14,7 @@ var ressourceMapping = {
     'dedommagementAmiante': 'dedommagement_victime_amiante',
     'gainsExceptionnels': 'gains_exceptionnels',
     'indChomagePartiel': 'indemnites_chomage_partiel',
+    'indFinDeContrat': 'indemnite_fin_contrat_net',
     'indJourAccidentDuTravail': 'indemnites_journalieres_accident_travail',
     'indJourMaladie': 'indemnites_journalieres_maladie',
     'indJourMaladieProf': 'indemnites_journalieres_maladie_professionnelle',
