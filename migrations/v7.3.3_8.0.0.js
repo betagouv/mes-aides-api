@@ -23,6 +23,7 @@ var ressourceMapping = {
     'pensionsInvalidite': 'pensions_invalidite',
     'pensionsRetraitesRentes': 'retraite_nette',
     'prestationCompensatoire': 'prestation_compensatoire',
+    'primeRepriseActivite': 'prime_forfaitaire_mensuelle_reprise_activite',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
