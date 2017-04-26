@@ -24,6 +24,7 @@ var ressourceMapping = {
     'pensionsRetraitesRentes': 'retraite_nette',
     'prestationCompensatoire': 'prestation_compensatoire',
     'primeRepriseActivite': 'prime_forfaitaire_mensuelle_reprise_activite',
+    'primes': 'primes_salaires_net',
     'retraiteCombattant': 'retraite_combattant',
     'revenusAgricolesTns': 'tns_benefice_exploitant_agricole',
     'revenusDuCapital': 'revenus_capital',
