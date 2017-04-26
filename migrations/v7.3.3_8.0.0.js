@@ -21,6 +21,7 @@ var ressourceMapping = {
     'indVolontariat': 'indemnites_volontariat',
     'pensionsAlimentairesVersees' : 'pensions_alimentaires_versees_individu',
     'pensionsInvalidite': 'pensions_invalidite',
+    'prestationCompensatoire': 'prestation_compensatoire',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
