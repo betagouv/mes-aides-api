@@ -10,6 +10,7 @@ var ressourceMapping = {
     'bourseRecherche': 'bourse_recherche',
     'caAutoEntrepreneur': 'tns_auto_entrepreneur_chiffre_affaires',
     'caMicroEntreprise' : 'tns_micro_entreprise_chiffre_affaires',
+    'complementAAH': 'caah',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
