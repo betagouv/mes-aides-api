@@ -14,7 +14,7 @@ describe('Resources mapping', function () {
                     ressources: [
                         {
                             periode: '2015-02',
-                            type: 'stage', // => indemnites_stage
+                            type: 'indemnites_stage', // => indemnites_stage
                             montant: 200
                         },
                         {
@@ -23,7 +23,7 @@ describe('Resources mapping', function () {
                             montant: 300
                         }
                     ],
-                    interruptedRessources: ['stage'],
+                    interruptedRessources: ['indemnites_stage'],
                     specificSituations: [],
                 }
             ]

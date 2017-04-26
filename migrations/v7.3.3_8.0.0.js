@@ -30,6 +30,7 @@ var ressourceMapping = {
     'revenusLocatifs': 'revenus_locatifs',
     'revenusStageFormationPro': 'revenus_stage_formation_pro',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
+    'stage': 'indemnites_stage',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
