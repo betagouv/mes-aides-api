@@ -12,6 +12,7 @@ var ressourceMapping = {
     'caMicroEntreprise' : 'tns_micro_entreprise_chiffre_affaires',
     'complementAAH': 'caah',
     'dedommagementAmiante': 'dedommagement_victime_amiante',
+    'fraisReelsDeductibles': 'frais_reels',
     'gainsExceptionnels': 'gains_exceptionnels',
     'indChomagePartiel': 'indemnites_chomage_partiel',
     'indFinDeContrat': 'indemnite_fin_contrat_net',
