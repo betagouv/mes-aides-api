@@ -28,6 +28,7 @@ var ressourceMapping = {
     'revenusAgricolesTns': 'tns_benefice_exploitant_agricole',
     'revenusDuCapital': 'revenus_capital',
     'revenusLocatifs': 'revenus_locatifs',
+    'revenusStageFormationPro': 'revenus_stage_formation_pro',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',

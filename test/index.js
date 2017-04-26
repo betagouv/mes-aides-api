@@ -19,7 +19,7 @@ describe('Resources mapping', function () {
                         },
                         {
                             periode: '2015-02',
-                            type: 'revenusStageFormationPro', // => revenus_stage_formation_pro
+                            type: 'revenus_stage_formation_pro', // => revenus_stage_formation_pro
                             montant: 300
                         }
                     ],
