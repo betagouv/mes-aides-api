@@ -20,6 +20,7 @@ var ressourceMapping = {
     'indJourMaternite': 'indemnites_journalieres_maternite',
     'indVolontariat': 'indemnites_volontariat',
     'pensionsAlimentairesVersees' : 'pensions_alimentaires_versees_individu',
+    'pensionsInvalidite': 'pensions_invalidite',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
