@@ -25,6 +25,7 @@ var ressourceMapping = {
     'prestationCompensatoire': 'prestation_compensatoire',
     'primeRepriseActivite': 'prime_forfaitaire_mensuelle_reprise_activite',
     'retraiteCombattant': 'retraite_combattant',
+    'revenusAgricolesTns': 'tns_benefice_exploitant_agricole',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
