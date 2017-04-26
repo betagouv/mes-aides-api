@@ -27,6 +27,7 @@ var ressourceMapping = {
     'retraiteCombattant': 'retraite_combattant',
     'revenusAgricolesTns': 'tns_benefice_exploitant_agricole',
     'revenusDuCapital': 'revenus_capital',
+    'revenusLocatifs': 'revenus_locatifs',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
