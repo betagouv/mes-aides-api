@@ -5,7 +5,6 @@ var ressourceMapping = {
     'allocationsChomage': 'chomage_net',
     'allocationSecurisationPro' : 'allocation_securisation_professionnelle',
     'autresRevenusTns' : 'tns_autres_revenus',
-    'autresRevenusTnsActiviteType': 'tns_autres_revenus_type_activite',
     'bourseEnseignementSup': 'bourse_enseignement_sup',
     'bourseRecherche': 'bourse_recherche',
     'caAutoEntrepreneur': 'tns_auto_entrepreneur_chiffre_affaires',
@@ -54,7 +53,7 @@ migrateAllSituations(function(situation) {
 
         individuPropertyKeys.forEach(function(key) {
             if (individu[key]) {
-                individu[individuPropertyMapping[key]] = individu.autresRevenusTnsActiviteType;
+                individu[individuPropertyMapping[key]] = individu[key];
                 delete individu[key];
                 isSituationUpdated = true;
             }
