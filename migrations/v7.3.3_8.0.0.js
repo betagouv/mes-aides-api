@@ -4,6 +4,7 @@ var migrateAllSituations = require('./migrations').migrateAllSituations;
 var mapping = {
     'allocationsChomage': 'chomage_net',
     'allocationSecurisationPro' : 'allocation_securisation_professionnelle',
+    'autresRevenusTns' : 'tns_autres_revenus',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
