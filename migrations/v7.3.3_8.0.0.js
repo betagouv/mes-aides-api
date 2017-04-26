@@ -9,6 +9,7 @@ var ressourceMapping = {
     'bourseEnseignementSup': 'bourse_enseignement_sup',
     'bourseRecherche': 'bourse_recherche',
     'caAutoEntrepreneur': 'tns_auto_entrepreneur_chiffre_affaires',
+    'caMicroEntreprise' : 'tns_micro_entreprise_chiffre_affaires',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
