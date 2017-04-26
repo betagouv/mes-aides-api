@@ -18,6 +18,7 @@ var ressourceMapping = {
     'indJourMaladie': 'indemnites_journalieres_maladie',
     'indJourMaladieProf': 'indemnites_journalieres_maladie_professionnelle',
     'indJourMaternite': 'indemnites_journalieres_maternite',
+    'indVolontariat': 'indemnites_volontariat',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
