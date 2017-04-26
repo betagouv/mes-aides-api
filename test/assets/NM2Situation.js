@@ -8,62 +8,62 @@ module.exports = {
             ressources: [
                 {
                     periode: '2017-03',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 1200
                 },
                 {
                     periode: '2017-02',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 1200
                 },
                 {
                     periode: '2017-01',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 1200
                 },
                 {
                     periode: '2016-12',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 400
                 },
                 {
                     periode: '2016-11',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 400
                 },
                 {
                     periode: '2016-10',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 400
                 },
                 {
                     periode: '2016-09',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 400
                 },
                 {
                     periode: '2016-08',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 400
                 },
                 {
                     periode: '2016-07',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 400
                 },
                 {
                     periode: '2016-06',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 400
                 },
                 {
                     periode: '2016-05',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 400
                 },
                 {
                     periode: '2016-04',
-                    type: 'allocationsChomage',
+                    type: 'chomage_net',
                     montant: 400
                 },
             ],

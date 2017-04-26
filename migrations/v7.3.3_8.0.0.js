@@ -2,6 +2,7 @@ var _ = require('lodash');
 var migrateAllSituations = require('./migrations').migrateAllSituations;
 
 var mapping = {
+    'allocationsChomage': 'chomage_net',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
