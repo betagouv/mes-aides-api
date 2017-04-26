@@ -14,6 +14,7 @@ var ressourceMapping = {
     'dedommagementAmiante': 'dedommagement_victime_amiante',
     'gainsExceptionnels': 'gains_exceptionnels',
     'indChomagePartiel': 'indemnites_chomage_partiel',
+    'indJourAccidentDuTravail': 'indemnites_journalieres_accident_travail',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
