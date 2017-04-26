@@ -12,6 +12,7 @@ var ressourceMapping = {
     'caMicroEntreprise' : 'tns_micro_entreprise_chiffre_affaires',
     'complementAAH': 'caah',
     'dedommagementAmiante': 'dedommagement_victime_amiante',
+    'gainsExceptionnels': 'gains_exceptionnels',
     'clca': 'paje_clca',
     'prepare': 'paje_prepare',
     'primeActivite': 'ppa'
