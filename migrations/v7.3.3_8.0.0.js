@@ -62,7 +62,7 @@ migrateAllSituations(function(situation) {
         ressourceKeys.forEach(function(key) {
             var index = _.indexOf(individu.interruptedRessources, key);
             if (index> -1) {
-                individu.interruptedRessources[index] = ressourceMapping[key];
+                individu.interruptedRessources.set(index, ressourceMapping[key]);
                 isSituationUpdated = true;
             }
         });
