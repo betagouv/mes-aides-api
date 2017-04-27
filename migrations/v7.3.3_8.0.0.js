@@ -30,6 +30,7 @@ var ressourceMapping = {
     'revenusAgricolesTns': 'tns_benefice_exploitant_agricole',
     'revenusDuCapital': 'revenus_capital',
     'revenusLocatifs': 'revenus_locatifs',
+    'revenusSalarie': 'salaire_net_hors_revenus_exceptionnels',
     'revenusStageFormationPro': 'revenus_stage_formation_pro',
     'rncAutresRevenus': 'chomage_imposable',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
