@@ -9,6 +9,7 @@ var ressourceMapping = {
     'bourseRecherche': 'bourse_recherche',
     'caAutoEntrepreneur': 'tns_auto_entrepreneur_chiffre_affaires',
     'caMicroEntreprise' : 'tns_micro_entreprise_chiffre_affaires',
+    'clca': 'paje_clca',
     'complementAAH': 'caah',
     'dedommagementAmiante': 'dedommagement_victime_amiante',
     'fraisReelsDeductibles': 'frais_reels',
@@ -24,7 +25,9 @@ var ressourceMapping = {
     'pensionsAlimentairesVersees' : 'pensions_alimentaires_versees_individu',
     'pensionsInvalidite': 'pensions_invalidite',
     'pensionsRetraitesRentes': 'retraite_nette',
+    'prepare': 'paje_prepare',
     'prestationCompensatoire': 'prestation_compensatoire',
+    'primeActivite': 'ppa',
     'primeRepriseActivite': 'prime_forfaitaire_mensuelle_reprise_activite',
     'primes': 'primes_salaires_net',
     'retraiteCombattant': 'retraite_combattant',
@@ -35,10 +38,7 @@ var ressourceMapping = {
     'revenusStageFormationPro': 'revenus_stage_formation_pro',
     'rncAutresRevenus': 'chomage_imposable',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
-    'stage': 'indemnites_stage',
-    'clca': 'paje_clca',
-    'prepare': 'paje_prepare',
-    'primeActivite': 'ppa'
+    'stage': 'indemnites_stage'
 };
 
 var ressourceKeys = _.keys(ressourceMapping);
