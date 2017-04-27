@@ -20,6 +20,7 @@ var ressourceMapping = {
     'indJourMaladieProf': 'indemnites_journalieres_maladie_professionnelle',
     'indJourMaternite': 'indemnites_journalieres_maternite',
     'indVolontariat': 'indemnites_volontariat',
+    'pensionsAlimentaires': 'pensions_alimentaires_percues',
     'pensionsAlimentairesVersees' : 'pensions_alimentaires_versees_individu',
     'pensionsInvalidite': 'pensions_invalidite',
     'pensionsRetraitesRentes': 'retraite_nette',
