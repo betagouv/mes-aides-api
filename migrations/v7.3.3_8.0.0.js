@@ -38,6 +38,7 @@ var ressourceMapping = {
     'revenusStageFormationPro': 'revenus_stage_formation_pro',
     'rncAutresRevenus': 'chomage_imposable',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
+    'rncRevenusActivite': 'salaire_imposable_ym2',
     'stage': 'indemnites_stage'
 };
 
