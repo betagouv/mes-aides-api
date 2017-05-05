@@ -70,7 +70,7 @@ describe('Resources mapping', function () {
                         ressources: [
                             {
                                 periode: '2013',
-                                type: 'rncPensionsAlimentairesVersees',
+                                type: 'pensions_alimentaires_versees_ym2',
                                 montant: 3000
                             }
                         ],
@@ -81,7 +81,7 @@ describe('Resources mapping', function () {
                         ressources: [
                             {
                                 periode: '2013',
-                                type: 'rncPensionsAlimentairesVersees',
+                                type: 'pensions_alimentaires_versees_ym2',
                                 montant: 3000
                             }
                         ],

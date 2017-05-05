@@ -37,6 +37,7 @@ var ressourceMapping = {
     'revenusSalarie': 'salaire_net_hors_revenus_exceptionnels',
     'revenusStageFormationPro': 'revenus_stage_formation_pro',
     'rncAutresRevenus': 'chomage_imposable',
+    'rncPensionsAlimentairesVersees': 'pensions_alimentaires_versees_ym2',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
     'rncRevenusActivite': 'salaire_imposable_ym2',
     'stage': 'indemnites_stage'
