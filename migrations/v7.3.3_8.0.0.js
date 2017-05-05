@@ -40,6 +40,7 @@ var ressourceMapping = {
     'rncPensionsAlimentairesVersees': 'pensions_alimentaires_versees_ym2',
     'rncPensionsRetraitesRentes': 'retraite_imposable',
     'rncRevenusActivite': 'salaire_imposable_ym2',
+    'rncPensionsAlimentaires': 'pensions_alimentaires_percues_ym2',
     'stage': 'indemnites_stage'
 };
 
