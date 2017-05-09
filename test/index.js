@@ -14,16 +14,16 @@ describe('Resources mapping', function () {
                     ressources: [
                         {
                             periode: '2015-02',
-                            type: 'stage', // => indemnites_stage
+                            type: 'indemnites_stage', // => indemnites_stage
                             montant: 200
                         },
                         {
                             periode: '2015-02',
-                            type: 'revenusStageFormationPro', // => revenus_stage_formation_pro
+                            type: 'revenus_stage_formation_pro', // => revenus_stage_formation_pro
                             montant: 300
                         }
                     ],
-                    interruptedRessources: ['stage'],
+                    interruptedRessources: ['indemnites_stage'],
                     specificSituations: [],
                 }
             ]
@@ -70,7 +70,7 @@ describe('Resources mapping', function () {
                         ressources: [
                             {
                                 periode: '2013',
-                                type: 'rncPensionsAlimentairesVersees',
+                                type: 'pensions_alimentaires_versees_ym2',
                                 montant: 3000
                             }
                         ],
@@ -81,7 +81,7 @@ describe('Resources mapping', function () {
                         ressources: [
                             {
                                 periode: '2013',
-                                type: 'rncPensionsAlimentairesVersees',
+                                type: 'pensions_alimentaires_versees_ym2',
                                 montant: 3000
                             }
                         ],
