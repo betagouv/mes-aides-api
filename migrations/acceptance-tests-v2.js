@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
-var _s = require('underscore.string');
+// This migration relied on "underscore.string": "^2.3.3".
+// It has been removed from package.json to lower the cost of upgrading dependencies.
+// This removal occurred on version 9.0.0 of the mes-aides-api.
+var _s require('underscore.string');
 var es = require('event-stream');
 var async = require('async');
 
