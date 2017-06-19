@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var config = require('./lib/config/config');
 var ludwigApi = require('ludwig-api');
+var reverseMap = require('./lib/simulation/openfisca/mapping/reverse');
 
 // Setup mongoose
 require('./lib/config/mongoose')(mongoose, config);
@@ -23,7 +24,7 @@ app.use(ludwigApi({
             if (err) return done(err);
             if (!situation) return done(new Error('Situation not found'));
             situation.simulate(function(err, result) {
-                return done(err, result && result.calculatedPrestations);
+                return done(err, result && reverseMap(result, situation).calculatedPrestations);
             });
         });
     },
