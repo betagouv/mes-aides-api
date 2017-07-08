@@ -121,3 +121,29 @@ describe('Ressources', function () {
         });
     });
 });
+
+describe('addIndividuProperties', function() {
+    it('moves properties into Individu', function() {
+        var definitions = {
+            Individu: {
+                properties: {
+                    a: 1,
+                    b: 2,
+                },
+            },
+            Source: {
+                properties: {
+                    c: 3,
+                },
+            },
+        };
+        var moveInstructions = {
+            Source: {
+                properties: [{ name: 'c' }],
+            },
+        };
+
+        mapping.addIndividuProperties(definitions, moveInstructions);
+        definitions.Individu.properties.should.have.ownProperty('c');
+    });
+});
