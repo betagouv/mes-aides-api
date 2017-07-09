@@ -20,15 +20,22 @@ describe('Ressources', function () {
                             periode: '2015-02',
                             type: 'revenus_stage_formation_pro',
                             montant: 300
+                        },
+                        {
+                            periode: '2015-02',
+                            type: 'paje_clca',
+                            montant: 42
                         }
                     ],
-                    interruptedRessources: ['indemnites_stage'],
+                    interruptedRessources: ['indemnites_stage', 'paje_clca'],
                     specificSituations: [],
                 }
-            ]
+            ],
+            logement: {},
         };
 
         var individu = mapping.mapIndividus(situation)[0];
+        var famille = mapping.mapFamille(situation);
 
         it('devrait copier les ressources encore perçues sur le mois courant', function () {
             individu.revenus_stage_formation_pro.should.have.ownProperty('2015-03');
@@ -37,6 +44,15 @@ describe('Ressources', function () {
 
         it('ne devrait pas copier les ressources dont la perception est interrompue sur le mois courant', function () {
             individu.indemnites_stage.should.not.have.ownProperty('2015-03');
+        });
+
+        it('devrait afficher paje_clca pour le mois courant', function() {
+            famille.paje_clca.should.have.ownProperty('2015-02');
+            famille.paje_clca['2015-02'].should.equal(42);
+        });
+
+        it('ne devrait pas prolonger paje_clca', function() {
+            famille.paje_clca.should.not.have.ownProperty('2015-03');
         });
 
     });
