@@ -2,6 +2,7 @@ Deprecation notice - This project should no longer be used.
 ===========================================================
 
 > New versions pushed to easily migrate situations to the new format.
+> SEMVER is not enforced from 12.0.0 (and maybe before 🙂)
 
 A mapping interface between the [mes-aides](https://mes-aides.gouv.fr) [user interface](https://github.com/sgmap/mes-aides-ui) and the [OpenFisca](http://openfisca.fr) simulation engine.
 
